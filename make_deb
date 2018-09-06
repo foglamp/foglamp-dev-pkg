@@ -82,6 +82,11 @@ if [[ "$architecture" == "none" ]]; then
   exit 0
 fi
 
+if [ "${FOGLAMP_ROOT}" == "" ]; then
+  echo "FOGLAMP_ROOT environment variable is not set, can not continue."
+  exit 1
+fi
+
 version=`cat ${FOGLAMP_ROOT}/VERSION | tr -d ' ' | grep 'foglamp_version=' | head -1 | sed -e 's/\(.*\)=\(.*\)/\2/g'`
 BUILD_ROOT="${GIT_ROOT}/packages/Debian/build"
 
@@ -133,7 +138,7 @@ cp -R ${FOGLAMP_ROOT}/C/plugins/common/include/*.h .
 cp -R ${FOGLAMP_ROOT}/C/plugins/filter/common/include/*.h .
 echo "  - FogLAMP header files added."
 # Add third-party include files
-echo "  - Third-party header files added."
+#echo "  - Third-party header files added.
 cd ../../../
 # Create lib dir
 mkdir -p usr/lib/foglamp

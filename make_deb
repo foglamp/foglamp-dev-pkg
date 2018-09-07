@@ -135,10 +135,15 @@ cd usr/include/foglamp
 # Add FogLAMP *.h files
 cp -R ${FOGLAMP_ROOT}/C/common/include/*.h .
 cp -R ${FOGLAMP_ROOT}/C/plugins/common/include/*.h .
+cp -R ${FOGLAMP_ROOT}/C/services/common/include/*.h .
 cp -R ${FOGLAMP_ROOT}/C/plugins/filter/common/include/*.h .
 echo "  - FogLAMP header files added."
 # Add third-party include files
-#echo "  - Third-party header files added.
+cp -R ${FOGLAMP_ROOT}/C/thirdparty/rapidjson/include/rapidjson .
+echo "  - Third-party header files added (rapidjson)."
+mkdir Simple-Web-Server
+cp ${FOGLAMP_ROOT}/C/thirdparty/Simple-Web-Server/*.hpp Simple-Web-Server
+echo "  - Third-party header files added (Simple-Web-Server)."
 cd ../../../
 # Create lib dir
 mkdir -p usr/lib/foglamp
@@ -164,6 +169,6 @@ fi
 
 echo "Building the new package..."
 dpkg-deb --build ${package_name}
-echo "Building of ${package_name} complete."
+echo "Building complete."
 
 exit 0

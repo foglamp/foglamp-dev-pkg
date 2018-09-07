@@ -141,6 +141,9 @@ echo "  - FogLAMP header files added."
 # Add third-party include files
 cp -R ${FOGLAMP_ROOT}/C/thirdparty/rapidjson/include/rapidjson .
 echo "  - Third-party header files added (rapidjson)."
+mkdir Simple-Web-Server
+cp ${FOGLAMP_ROOT}/C/thirdparty/Simple-Web-Server/*.hpp Simple-Web-Server
+echo "  - Third-party header files added (Simple-Web-Server)."
 cd ../../../
 # Create lib dir
 mkdir -p usr/lib/foglamp

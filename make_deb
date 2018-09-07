@@ -135,6 +135,7 @@ cd usr/include/foglamp
 # Add FogLAMP *.h files
 cp -R ${FOGLAMP_ROOT}/C/common/include/*.h .
 cp -R ${FOGLAMP_ROOT}/C/plugins/common/include/*.h .
+cp -R ${FOGLAMP_ROOT}/C/services/common/include/*.h .
 cp -R ${FOGLAMP_ROOT}/C/plugins/filter/common/include/*.h .
 echo "  - FogLAMP header files added."
 # Add third-party include files

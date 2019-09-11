@@ -1,13 +1,13 @@
 
 .. Links
-.. _main repository: https://github.com/foglamp/FogLAMP
+.. _main repository: https://github.com/fledge/Fledge
 
 
 *****************************
-Packaging for FogLAMP SDK
+Packaging for Fledge SDK
 *****************************
 
-This repo contains the scripts used to create a FogLAMP development package.
+This repo contains the scripts used to create a Fledge development package.
 
 We have separated the package build from the `main repository`_ in order to provide a more flexible packaging and to maintain the smallest possible footprint of the main project, even in terms of source code and development.
 
@@ -36,7 +36,7 @@ The make_deb Script
 
   $ ./make_deb --help
   make_deb {x86|arm} [clean|cleanall]
-  This script is used to create the Debian SDK package of FogLAMP
+  This script is used to create the Debian SDK package of Fledge
   Arguments:
    x86      - Build an x86_64 development package
    arm      - Build an armv7l development package
@@ -48,9 +48,9 @@ The make_deb Script
 Building a Package
 ==================
 
-First, make sure FogLAMP source code is available somewhere on your environment.
-Use FOGLAMP_ROOT environment variable to set the source tree location and run ``make`` command in that path.
-NOTE: existing FogLAMP installation via ``make install`` can not be used as it lacks the needed header files.
+First, make sure Fledge source code is available somewhere on your environment.
+Use FLEDGE_ROOT environment variable to set the source tree location and run ``make`` command in that path.
+NOTE: existing Fledge installation via ``make install`` can not be used as it lacks the needed header files.
 Next, select the architecture to use, *x86* or *arm*.
 Finally, run the ``make_deb`` command:
 
@@ -59,28 +59,28 @@ Complete example:
 .. code-block:: console
 
   $ pwd
-  /home/foglamp/foglamp-pkg
-  $ export FOGLAMP_ROOT=/home/foglamp/source/FogLAMP
-  $ cd /home/foglamp/source/FogLAMP
+  /home/fledge/fledge-pkg
+  $ export FLEDGE_ROOT=/home/fledge/source/Fledge
+  $ cd /home/fledge/source/Fledge
   $ make
   ...
   ...
-  $ cd /home/foglamp/foglamp-pkg
+  $ cd /home/fledge/fledge-pkg
   $ ./make_deb x86
-  - FogLAMP Dev package (headers and libraries) -
-  The package root directory is : /home/foglamp/foglamp-pkg
-  The FogLAMP directory is      : /usr/local/foglamp
-  The FogLAMP version is        : 1.3
-  The package will be built in  : /home/foglamp/foglamp-pkg/packages/Debian/build
+  - Fledge Dev package (headers and libraries) -
+  The package root directory is : /home/fledge/fledge-pkg
+  The Fledge directory is      : /usr/local/fledge
+  The Fledge version is        : 1.3
+  The package will be built in  : /home/fledge/fledge-pkg/packages/Debian/build
   The architecture is set as    : x86_64
-  The package name is           : foglamp-dev-1.3-x86_64
+  The package name is           : fledge-dev-1.3-x86_64
 
   Populating the package and updating version in control file ...
-    - FogLAMP header files added.
-    - FogLAMP library files added.
+    - Fledge header files added.
+    - Fledge library files added.
   Done.
   Building the new package...
-  dpkg-deb: building package 'foglamp-dev' in 'foglamp-idev-1.3-x86_64.deb'.
+  dpkg-deb: building package 'fledge-dev' in 'fledge-idev-1.3-x86_64.deb'.
   Building complete.
   $
   
@@ -90,44 +90,44 @@ The result will be:
 
   $ ls -l packages/Debian/build/
   total 5964
-  drwxrwxr-x 4 ubuntu ubuntu    4096 Sep  5 19:17 foglamp-dev-1.3-x86_64
-  -rw-r--r-- 1 ubuntu ubuntu 3043156 Sep  5 19:17 foglamp-dev-1.3-x86_64.deb
+  drwxrwxr-x 4 ubuntu ubuntu    4096 Sep  5 19:17 fledge-dev-1.3-x86_64
+  -rw-r--r-- 1 ubuntu ubuntu 3043156 Sep  5 19:17 fledge-dev-1.3-x86_64.deb
   $
 
 The package contains two paths:
 
-- ./usr/include/foglamp/ (FogLAMP header files)
-- ./usr/lib/foglamp/     (FogLAMP libraries)
+- ./usr/include/fledge/ (Fledge header files)
+- ./usr/lib/fledge/     (Fledge libraries)
 
 If you execute the ``make_deb`` command again, you will see:
 
 .. code-block:: console
 
   $ ./make_deb x86
-  - FogLAMP Dev package (headers and libraries) -
-  The package root directory is : /home/foglamp/foglamp-pkg
-  The FogLAMP directory is      : /usr/local/foglamp
-  The FogLAMP version is        : 1.3
-  The package will be built in  : /home/foglamp/foglamp-pkg/packages/Debian/build
+  - Fledge Dev package (headers and libraries) -
+  The package root directory is : /home/fledge/fledge-pkg
+  The Fledge directory is      : /usr/local/fledge
+  The Fledge version is        : 1.3
+  The package will be built in  : /home/fledge/fledge-pkg/packages/Debian/build
   The architecture is set as    : x86_64
-  The package name is           : foglamp-dev-1.3-x86_64
+  The package name is           : fledge-dev-1.3-x86_64
 
-  Saving the old working environment as foglamp-dev-1.3-x86_64.0001
+  Saving the old working environment as fledge-dev-1.3-x86_64.0001
   Populating the package and updating version in control file ...
-    - FogLAMP header files added.
-    - FogLAMP library files added.
+    - Fledge header files added.
+    - Fledge library files added.
   Done.
-  Saving the old package as foglamp-dev-1.3-x86_64.deb.0001
+  Saving the old package as fledge-dev-1.3-x86_64.deb.0001
   Building the new package...
-  dpkg-deb: building package 'foglamp-dev' in 'foglamp-dev-1.3-x86_64.deb'.
+  dpkg-deb: building package 'fledge-dev' in 'fledge-dev-1.3-x86_64.deb'.
   Building complete.
   $
   $ ls -l packages/Debian/build/
   total 5968
-  drwxrwxr-x 4 ubuntu ubuntu    4096 Sep  6 07:24 foglamp-dev-1.3-x86_64
-  drwxrwxr-x 4 ubuntu ubuntu    4096 Sep  6 07:24 foglamp-dev-1.3-x86_64.0001
-  -rw-r--r-- 1 ubuntu ubuntu 3044234 Sep  6 07:25 foglamp-dev-1.3-x86_64.deb
-  -rw-r--r-- 1 ubuntu ubuntu 3052424 Sep  6 07:24 foglamp-dev-1.3-x86_64.deb.0001
+  drwxrwxr-x 4 ubuntu ubuntu    4096 Sep  6 07:24 fledge-dev-1.3-x86_64
+  drwxrwxr-x 4 ubuntu ubuntu    4096 Sep  6 07:24 fledge-dev-1.3-x86_64.0001
+  -rw-r--r-- 1 ubuntu ubuntu 3044234 Sep  6 07:25 fledge-dev-1.3-x86_64.deb
+  -rw-r--r-- 1 ubuntu ubuntu 3052424 Sep  6 07:24 fledge-dev-1.3-x86_64.deb.0001
   $
    
 ... where the previous build is now marked with the suffix *.0001*.

@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-PKG_NAME="foglamp-dev"
+PKG_NAME="fledge-dev"

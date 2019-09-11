@@ -27,9 +27,9 @@
 
 set -e
 
-PKG_NAME="foglamp-dev"
+PKG_NAME="fledge-dev"
 
-is_foglamp_dev_installed () {
+is_fledge_dev_installed () {
     set +e
     current_files_all=$(dpkg -L $PKG_NAME)
     rc=$((!$?))
@@ -37,11 +37,11 @@ is_foglamp_dev_installed () {
     set -e
 }
 
-# check if foglamp is installed
-IS_FOGLAMP_DEV_INSTALLED=$(is_foglamp_dev_installed)
+# check if fledge is installed
+IS_FLEDGE_DEV_INSTALLED=$(is_fledge_dev_installed)
 
-# if foglamp is installed...
-if [ "$IS_FOGLAMP_DEV_INSTALLED" -eq "1" ]
+# if fledge is installed...
+if [ "$IS_FLEDGE_DEV_INSTALLED" -eq "1" ]
 then
-    echo "FogLAMP development package is already installed: this is an upgrade/downgrade."
+    echo "Fledge development package is already installed: this is an upgrade/downgrade."
 fi
